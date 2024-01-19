@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Set;
 
 @Entity
@@ -127,5 +128,13 @@ public class Employee {
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%s %s - %s", this.firstName, this.lastName, this.jobTitle)).append(System.lineSeparator());
+        this.projects.stream().sorted(Comparator.comparing(p -> p.getName())).forEach(p -> sb.append(p.getName()).append(System.lineSeparator()));
+        return sb.toString();
     }
 }

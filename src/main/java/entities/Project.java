@@ -70,4 +70,14 @@ public class Project {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Project name: %s", this.name)).append(System.lineSeparator());
+        sb.append(String.format("  Project Description: %s", this.description)).append(System.lineSeparator());
+        sb.append(String.format("  Project Start Date: %s", this.startDate)).append(System.lineSeparator());
+        sb.append(String.format("  Project End Date: %s", this.endDate)).append(System.lineSeparator());
+        return sb.toString();
+    }
 }
