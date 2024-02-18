@@ -13,7 +13,7 @@ public class P13RemoveTowns {
         String townName = scanner.nextLine();
         Query queryToDeleteAddresses = entityManager.createQuery("DELETE FROM Address a WHERE a.town.name = :nameToDelete");
         queryToDeleteAddresses.setParameter("nameToDelete", townName);
-        queryToDeleteAddresses.executeUpdate();
+        deletedAddressesCount  = queryToDeleteAddresses.executeUpdate();
         Query queryToDeleteTown = entityManager.createQuery("DELETE FROM Town t WHERE t.name = :nameToDelete");
         queryToDeleteTown.setParameter("nameToDelete", townName);
 
